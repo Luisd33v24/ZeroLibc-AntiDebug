@@ -1,0 +1,8 @@
+# Binários e arquivos de objeto
+protector
+*.o
+
+# Arquivos temporários e do sistema
+.DS_Store
+*.swp
+*~

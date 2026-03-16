@@ -6,6 +6,7 @@ O projeto não possui dependências externas (sem libc), interagindo diretamente
 
 ## Estrutura do Projeto
 
+```text
 ZeroLibc-AntiDebug/
 ├── .github/          # Políticas de segurança e templates
 │   └── SECURITY.md
@@ -17,6 +18,7 @@ ZeroLibc-AntiDebug/
 ├── README.md         # Documentação do projeto
 ├── LICENSE           # Licença do repositório
 └── .gitignore        # Arquivos e pastas ignoradas (ex: pasta build/)
+```
 
 ## Funcionalidades
 

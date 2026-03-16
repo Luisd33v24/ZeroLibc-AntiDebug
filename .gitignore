@@ -1,6 +1,5 @@
-# Binários e arquivos de objeto
-protector
-*.o
+# Ignora a pasta de compilação inteira
+build/
 
 # Arquivos temporários e do sistema
 .DS_Store

@@ -1,8 +1,11 @@
-APP = protector
-SRC = protector.asm
-OBJ = protector.o
+APP = build/protector
+SRC = src/protector.asm
+OBJ = build/protector.o
 
-all: $(APP)
+all: pre_build $(APP)
+
+pre_build:
+	@mkdir -p build
 
 $(APP): $(OBJ)
 	ld -s -o $(APP) $(OBJ)
@@ -11,4 +14,4 @@ $(OBJ): $(SRC)
 	nasm -f elf64 -o $(OBJ) $(SRC)
 
 clean:
-	rm -f $(OBJ) $(APP)
+	rm -rf build/

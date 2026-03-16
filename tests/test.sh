@@ -1,7 +1,12 @@
 #!/bin/bash
-set -e  # Aborta o script se qualquer comando falhar
+
+# Volta para a raiz do projeto
+cd "$(dirname "$0")/.."
+
+set -e
 
 echo "[*] Compilando o projeto..."
+make clean > /dev/null
 if make > /dev/null; then
     echo "[OK] Compilacao concluida."
 else
@@ -10,16 +15,17 @@ else
 fi
 
 echo -e "\n[*] Teste 1: Execucao Limpa (Nativa)"
-if ./protector; then
+# Executa o binário a partir da pasta build/
+if ./build/protector; then
     echo " -> [PASSOU] Execucao normal validada (Exit Code 0)."
 else
     echo " -> [FALHOU] Falso positivo! O THRESHOLD pode estar baixo."
 fi
 
 echo -e "\n[*] Teste 2: Execucao sob Tracing (strace)"
-# Aqui não usamos set -e pois esperamos que o strace retorne erro (Exit 1)
 set +e
-strace -q -e trace=none ./protector > /dev/null 2>&1
+# Executa o binário a partir da pasta build/
+strace -q -e trace=none ./build/protector > /dev/null 2>&1
 if [ $? -eq 1 ]; then
     echo " -> [PASSOU] Depurador detectado com sucesso (Exit Code 1)."
 else
